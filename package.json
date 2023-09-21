@@ -24,7 +24,6 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "framer-motion": "^10.16.4",
     "react-toastify": "^9.1.3"
