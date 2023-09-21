@@ -11,7 +11,7 @@ export interface Props {
     tagline: string;
     title: string;
     desc: string;
-    package: {}[];
+    // package: {}[];
   }[];
 }
 export function CardSlider({ data }: Props) {

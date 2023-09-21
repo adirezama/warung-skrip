@@ -1,8 +1,6 @@
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Service", href: "/service" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 export const whyUs = [
   {

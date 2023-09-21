@@ -7,17 +7,10 @@ export const getServices = async () => {
   return data;
 };
 
-// export async function serviceData() {
-//   const data = await getServices();
-//   const services = data.data;
-//   return services;
-// }
-
-// export async function packageData() {
-//   const data = await serviceData();
-//   const packages = await data.package;
-//   console.log(packages);
-//   return packages;
-// }
-
-// console.log(await packageData());
+export const getOptionform = async () => {
+  const response = await fetch(
+    "https://api-warung-snt.elcodeee.com/api/warung-snt/v1/services-option/fv92sxmavl"
+  );
+  const data = await response.json();
+  return data;
+};

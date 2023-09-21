@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ReactElement } from "react";
+import { MouseEventHandler, ReactElement } from "react";
 
 export interface Props {
   cardStyle: string;
@@ -13,6 +13,7 @@ export interface Props {
   headStyle: string;
   descStyle: string;
   children?: ReactElement<any, any>;
+  handleOpen: any;
 }
 
 export function Card({
@@ -27,11 +28,12 @@ export function Card({
   headStyle,
   descStyle,
   children,
+  handleOpen,
 }: Props) {
   return (
     // Card properties
     <>
-      <div className={cardStyle}>
+      <div onClick={handleOpen} className={cardStyle}>
         <div className={contentWrap}>
           <div className={iconBgStyle}>
             <Image

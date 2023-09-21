@@ -20,36 +20,40 @@ export function Nav() {
             Logo
           </h1>
         </Link>
-        <ul className="flex flex-1 items-center justify-center gap-10 max-lg:hidden">
-          {navLinks.map((nav) => (
-            <li key={nav.label}>
-              <Link href={nav.href} className="nav_text hover:text-blue-light">
-                {nav.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="flex gap-5 max-lg:hidden">
-          <Link href="/offering">
-            <Button label="Offering" iconUrl="/icon/sell.svg" />
-          </Link>
-          <Image
-            src="/icon/alternate_email.svg"
-            alt="icon"
-            width={30}
-            height={30}
-            className="cursor-pointer hover:scale-90 transition-all ease-linear duration-300"
-          />
-        </div>
-        <div className="hidden max-lg:block">
-          <Image
-            onClick={() => setVisible((prev) => !prev)}
-            src="/icon/hamburger.svg"
-            alt="hamburger-menu"
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
+        <div className="flex gap-5">
+          <ul className="flex items-center justify-center gap-5 max-md:hidden">
+            {navLinks.map((nav) => (
+              <li key={nav.label}>
+                <Link
+                  href={nav.href}
+                  className="nav_text hover:text-blue-light">
+                  {nav.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-5 max-md:hidden">
+            <Link href="/offering">
+              <Button label="Offering" iconUrl="/icon/sell.svg" />
+            </Link>
+            <Image
+              src="/icon/alternate_email.svg"
+              alt="icon"
+              width={30}
+              height={30}
+              className="cursor-pointer hover:scale-90 transition-all ease-linear duration-300"
+            />
+          </div>
+          <div className="hidden max-md:block">
+            <Image
+              onClick={() => setVisible((prev) => !prev)}
+              src="/icon/hamburger.svg"
+              alt="hamburger-menu"
+              width={20}
+              height={20}
+              className="cursor-pointer"
+            />
+          </div>
         </div>
 
         {visible && (

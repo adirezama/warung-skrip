@@ -1,14 +1,100 @@
-import { Card } from "@components/Card";
+"use client";
+
+import Form from "@components/Form";
 import { steps } from "@constant";
+import { getOptionform } from "@utils/helper";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export interface Props {}
+export default function Offering() {
+  const [inputData, setInputData] = useState({
+    package: "",
+    service: "",
+    nama: "",
+    email: "",
+    jurusan: "",
+    whatsapp: "",
+    deadline: "",
+    catatan: "",
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [optionForm, setOptionForm] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const getOption = async () => {
+    const option = await getOptionform();
+    const data = option.data;
+    setOptionForm(data);
+    setIsloading(false);
+  };
+  useEffect(() => {
+    getOption();
+  }, []);
 
-export default function Offering({}: Props) {
+  const handleChange = (e: any) => {
+    if (e.target.name === "deadline") {
+      setInputData({
+        ...inputData,
+        deadline: moment(e.target.value).format("YYYY-MM-DD"),
+      });
+    }
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
+
+  const submitData = async (e: any) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("service", `${inputData.service} | ${inputData.package}`);
+      formData.append("nama", inputData.nama);
+      formData.append("email", inputData.email);
+      formData.append("jurusan", inputData.jurusan);
+      formData.append("whatsapp", inputData.whatsapp);
+      formData.append("deadline", inputData.deadline);
+      formData.append("catatan", inputData.catatan);
+      const response = await fetch(
+        "https://api-warung-snt.elcodeee.com/api/warung-snt/v1/submit-form/fv92sxmavl",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      if (response.ok) {
+        toast.success("Data sudah dikirim!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    } catch (error) {
+      toast.error("Terjadi kesalahan!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <>
       <section className="flex flex-col max-container">
-        <div className="flex flex-col md:flex-row items-center justify-between padding-x py-5 md:py-10">
+        <div className="flex flex-col md:flex-row items-center justify-between padding-x pt-5 md:pt-10">
           <div className="md:text-start text-center flex flex-col w-full max-w-[400px]">
             <p className="desc_text text-blue-light">Warung Tugas & Skripsi</p>
             <h1 className="head_text">Layanan Kami</h1>
@@ -40,6 +126,14 @@ export default function Offering({}: Props) {
             </div>
           ))}
         </div>
+        <Form
+          handleChange={handleChange}
+          submitData={submitData}
+          optionForm={optionForm}
+          submitting={submitting}
+          isLoading={isLoading}
+        />
+        <ToastContainer />
       </section>
     </>
   );
