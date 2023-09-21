@@ -13,7 +13,7 @@ export interface Props {
   headStyle: string;
   descStyle: string;
   children?: ReactElement<any, any>;
-  handleOpen: any;
+  handleOpen?: any;
 }
 
 export function Card({
