@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { FC } from "react";
 
-interface Props {
+interface Button {
   label: string;
   iconUrl?: string;
 }
 
-export function Button({ label, iconUrl }: Props) {
+export function Button({ label, iconUrl }: Button) {
   return (
-    <div className="max-md:hidden flex py-1.5 px-3 gap-2.5 bg-blue-light rounded-full hover:scale-95 transition-all ease-lineart duration-300 cursor-pointer">
+    <div className="max-md:hidden flex py-1.5 px-5 gap-2.5 bg-blue-light rounded-full hover:scale-95 transition-all ease-lineart duration-300 cursor-pointer">
       <p className="button_text">{label}</p>
       {iconUrl && (
         <Image

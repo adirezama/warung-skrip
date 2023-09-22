@@ -22,7 +22,7 @@ export function Service({ data, type }: ServiceData) {
       <div
         className={
           type === `home`
-            ? `flex max-lg:hidden gap-2.5`
+            ? `flex max-md:hidden gap-2.5`
             : `flex flex-col gap-3 cursor-pointer max-md:hidden`
         }>
         {data.map((value) => (
@@ -98,11 +98,11 @@ export function Service({ data, type }: ServiceData) {
         ))}
       </div>
       {type === "home" && (
-        <div className="hidden max-lg:block">
+        <div className="hidden max-md:block">
           <CardSlider data={data} />
         </div>
       )}
-      <Tabs />
+      {type === "service" && <Tabs data={data} />}
     </>
   );
 }

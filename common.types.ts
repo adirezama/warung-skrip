@@ -23,5 +23,15 @@ export interface ServiceData {
       price: number;
     }[];
   }[];
-  type: string;
+  type?: string;
+}
+
+export interface PackageData {
+  pack: {
+    title: string;
+    id: number;
+    category_id: number;
+    benefit: string;
+    price: number;
+  }[];
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MouseEventHandler, ReactElement } from "react";
+import { ReactElement } from "react";
 
 export interface Props {
   cardStyle: string;

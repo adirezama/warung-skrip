@@ -2,10 +2,9 @@
 
 import { navLinks } from "@constant";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { Button } from "./Button";
 import Image from "next/image";
-import "animate.css";
 import { motion } from "framer-motion";
 
 interface Props {}
@@ -39,9 +38,10 @@ export function Nav() {
             <Image
               src="/icon/alternate_email.svg"
               alt="icon"
-              width={30}
-              height={30}
-              className="cursor-pointer hover:scale-90 transition-all ease-linear duration-300"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="m-auto w-[30px] h-[30px] cursor-pointer hover:scale-90 transition-all ease-linear duration-300"
             />
           </div>
           <div className="hidden max-md:block">

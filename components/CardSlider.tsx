@@ -1,20 +1,11 @@
+import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
 import { Card } from "./Card";
+import { ServiceData } from "@common.types";
 
-export interface Props {
-  data: {
-    id: number;
-    thumbnail: string;
-    tagline: string;
-    title: string;
-    desc: string;
-    // package: {}[];
-  }[];
-}
-export function CardSlider({ data }: Props) {
+export function CardSlider({ data }: ServiceData) {
   return (
     <Swiper
       spaceBetween={40}
@@ -26,7 +17,7 @@ export function CardSlider({ data }: Props) {
         <SwiperSlide key={value.id}>
           <Card
             iconBgStyle="min-w-[7rem]"
-            cardStyle="card_service_slider"
+            cardStyle="card_service_slider border cursor-pointer"
             iconUrl={value.thumbnail}
             iconStyle="w-full h-[250px] object-contain aspect-square"
             headText={value.title}

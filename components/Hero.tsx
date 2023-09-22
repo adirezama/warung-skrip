@@ -33,6 +33,7 @@ export function Hero({ type, headText, descText, imgUrl }: Props) {
         width={0}
         height={0}
         sizes="100vw"
+        priority={true}
         className={type === `home` ? `w-[350px] md:w-[480px]` : `w-[250px]`}
       />
     </section>
