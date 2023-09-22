@@ -1,6 +1,7 @@
 export const getServices = async () => {
   const response = await fetch(
-    "https://api-warung-snt.elcodeee.com/api/warung-snt/v1/services/fv92sxmavl"
+    `${process.env.ENDPOINT}${process.env.GET_SERVICES}${process.env.KEY}`,
+    { cache: "no-cache" }
   );
   const data = await response.json();
 
@@ -8,9 +9,7 @@ export const getServices = async () => {
 };
 
 export const getOptionform = async () => {
-  const response = await fetch(
-    "https://api-warung-snt.elcodeee.com/api/warung-snt/v1/services-option/fv92sxmavl"
-  );
+  const response = await fetch(`${process.env.GET_OPTION_ENDPOINT}`);
   const data = await response.json();
   return data;
 };

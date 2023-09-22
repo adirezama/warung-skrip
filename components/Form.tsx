@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 const Form = ({
   handleChange,
@@ -6,6 +7,8 @@ const Form = ({
   optionForm,
   submitting,
   isLoading,
+  handleTabClick,
+  activeTab,
 }: any) => {
   return (
     <section className="w-full max-container padding-x py-5 flex items-center justify-center flex-col">
@@ -24,7 +27,7 @@ const Form = ({
                 onChange={handleChange}
               />
               <label
-                className="flex items-center  w-full justify-between p-2 border-2 rounded-lg border-gray-400 cursor-pointer"
+                className="flex items-center  w-full justify-between p-2 border rounded-lg border-gray-400 cursor-pointer"
                 htmlFor="">
                 <span className="text-xs font-semibold uppercase">
                   Paket Pilihan
@@ -46,7 +49,7 @@ const Form = ({
                 onChange={handleChange}
               />
               <label
-                className="flex items-center  w-full justify-between p-2 border-2 rounded-lg border-gray-400 cursor-pointer"
+                className="flex items-center  w-full justify-between p-2 border rounded-lg  border-gray-400 cursor-pointer"
                 htmlFor="">
                 <span className="text-xs font-semibold uppercase">
                   Paket Pilihan
@@ -68,7 +71,7 @@ const Form = ({
                 onChange={handleChange}
               />
               <label
-                className="flex items-center  w-full justify-between p-2 border-2 rounded-lg border-gray-400 cursor-pointer"
+                className="flex items-center  w-full justify-between p-2 border rounded-lg border-gray-400 cursor-pointer"
                 htmlFor="">
                 <span className="text-xs font-semibold uppercase">
                   Paket Pilihan
@@ -86,15 +89,18 @@ const Form = ({
             optionForm.category.map((val: any, index: any) => (
               <div key={index}>
                 <input
-                  className="hidden"
+                  className="hidden checked:border-blue-light"
                   id={val.id}
                   type="radio"
                   name="service"
                   value={val.title}
                   onChange={handleChange}
+                  onClick={() => {
+                    handleTabClick(val.id);
+                  }}
                 />
                 <label
-                  className="flex items-center  w-full justify-between p-2 border-2 rounded-lg border-gray-400 cursor-pointer"
+                  className="flex items-center  w-full justify-between p-2 border rounded-lg border-gray-400 cursor-pointer"
                   htmlFor={val.id}>
                   <span className="text-xs font-semibold uppercase">
                     {isLoading ? "waiting" : val.title}
@@ -113,7 +119,7 @@ const Form = ({
         </div>
         {/* Select Option */}
         <select
-          className="border-gray-400 border-2 py-3 px-5 rounded-lg cursor-pointer"
+          className="border-gray-400 border py-3 px-5 rounded-lg cursor-pointer focus-within:border-blue-light active:border-blue-light"
           name="package"
           id="package"
           onChange={handleChange}>
@@ -121,9 +127,13 @@ const Form = ({
           {isLoading
             ? null
             : optionForm.sub_category.map((val: any, index: any) => (
-                <option key={index} value={val.title}>
-                  {val.title}
-                </option>
+                <React.Fragment key={index}>
+                  {activeTab === val.category_id && (
+                    <option key={index} value={val.title}>
+                      {val.title}
+                    </option>
+                  )}
+                </React.Fragment>
               ))}
         </select>
         {/* Nama dan Email */}
@@ -135,11 +145,10 @@ const Form = ({
             </label>
             <input
               placeholder="Nama"
-              className="border-2 border-gray py-3 px-5 rounded-lg "
+              className="border border-gray py-3 px-5 rounded-lg focus:border-blue-light focus:outline-none disabled:border-slate-200  focus: focus:invalid:ring-red-600"
               type="text"
               name="nama"
               id="nama"
-              required
               onChange={handleChange}
             />
           </div>
@@ -149,9 +158,9 @@ const Form = ({
               Email
             </label>
             <input
-              placeholder="email"
-              className="border-2 border-gray py-3 px-5 rounded-lg "
-              type="text"
+              placeholder="example@email.com"
+              className="border border-gray py-3 px-5 rounded-lg focus:border-blue-light focus:outline-none "
+              type="email"
               name="email"
               id="email"
               required
@@ -165,8 +174,8 @@ const Form = ({
             Jurusan
           </label>
           <input
-            placeholder="Jurusan"
-            className="border-2 border-gray py-3 px-5 rounded-lg "
+            placeholder="Jurusan Teknologi Informatika"
+            className="border border-gray py-3 px-5 rounded-lg focus:border-blue-light focus:outline-none "
             type="text"
             name="jurusan"
             id="jurusan"
@@ -180,8 +189,8 @@ const Form = ({
             Whatsapp
           </label>
           <input
-            placeholder="Whatsapp"
-            className="border-2 border-gray py-3 px-5 rounded-lg "
+            placeholder="08xx-xxxx-xxxx"
+            className="border border-gray py-3 px-5 rounded-lg focus:border-blue-light focus:outline-none "
             type="text"
             name="whatsapp"
             id="whatsapp"
@@ -195,7 +204,7 @@ const Form = ({
             Deadline
           </label>
           <input
-            className="border-2 border-gray py-3 px-5 rounded-lg block"
+            className="border border-gray py-3 px-5 rounded-lg block focus:border-blue-light focus:outline-none "
             type="date"
             name="deadline"
             id="deadline"
@@ -208,7 +217,7 @@ const Form = ({
             Pesan
           </label>
           <textarea
-            className="border-2 border-gray py-3 px-5 rounded-lg block"
+            className="border border-gray py-3 px-5 rounded-lg block focus:border-blue-light focus:outline-none s"
             name="catatan"
             id="catatan"
             onChange={handleChange}

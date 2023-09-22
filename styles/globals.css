@@ -51,14 +51,31 @@ body {
 }
 
 .swiper {
-  width: 400px;
+  max-width: 400px;
   height: 27rem;
 }
+@media (max-width: 768px) {
+  .swiper {
+    max-width: 350px;
+    height: fit-content;
+  }
+}
+@media (max-width: 320px) {
+  .swiper {
+    max-width: 280px;
+  }
+}
 input:checked + label {
-  border-color: black;
+  border-color: #5e97ff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
+input:invalid + label {
+  border-color: red;
+}
+
+/* Apply styles when the input is required and valid */
+
 .max-container {
   max-width: 1440px;
   margin: 0 auto;
@@ -80,7 +97,7 @@ input:checked + label {
   @apply md:text-[1.45rem] text-[0.75rem];
 }
 .head_card_service_text {
-  @apply lg:text-[1.75rem] md:text-[1.5rem] text-[1.175rem];
+  @apply lg:text-[1.5rem] md:text-[1.15rem] text-[1.175rem];
 }
 .desc_card_service_text {
   @apply lg:text-[1.375rem] md:text-[1rem] text-[0.875rem];

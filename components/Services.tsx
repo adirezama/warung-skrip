@@ -1,7 +1,3 @@
-"use client";
-import { useEffect, useState } from "react";
-import { Card } from "./Card";
-import { CardSlider } from "./CardSlider";
 import { Service } from "./Service";
 
 export function Services({ data, type }: any) {

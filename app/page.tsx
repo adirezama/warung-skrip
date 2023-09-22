@@ -4,9 +4,7 @@ import { Services } from "@components/Services";
 import { WhyUs } from "@components/WhyUs";
 import { getServices } from "@utils/helper";
 
-export interface Props {}
-
-export default async function page({}: Props) {
+export default async function page({}) {
   const { data } = await getServices();
 
   return (

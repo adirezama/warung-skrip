@@ -23,9 +23,14 @@ export default function Offering() {
   const [submitting, setSubmitting] = useState(false);
   const [optionForm, setOptionForm] = useState([]);
   const [isLoading, setIsloading] = useState(true);
+  const [activeTab, setActiveTab] = useState(1);
+
+  const handleTabClick = (index: any) => {
+    setActiveTab(index);
+  };
   const getOption = async () => {
     const option = await getOptionform();
-    const data = option.data;
+    const { data } = option;
     setOptionForm(data);
     setIsloading(false);
   };
@@ -57,7 +62,7 @@ export default function Offering() {
       formData.append("deadline", inputData.deadline);
       formData.append("catatan", inputData.catatan);
       const response = await fetch(
-        "https://api-warung-snt.elcodeee.com/api/warung-snt/v1/submit-form/fv92sxmavl",
+        `${process.env.ENDPOINT}${process.env.POST_FORM}${process.env.KEY}`,
         {
           method: "POST",
           body: formData,
@@ -132,6 +137,8 @@ export default function Offering() {
           optionForm={optionForm}
           submitting={submitting}
           isLoading={isLoading}
+          handleTabClick={handleTabClick}
+          activeTab={activeTab}
         />
         <ToastContainer />
       </section>

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { Button } from "./Button";
 import Image from "next/image";
-export interface Props {}
 
-export function Footer({}: Props) {
+export function Footer({}) {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-blue-dark text-white py-10 max-container padding-x">
@@ -14,8 +13,8 @@ export function Footer({}: Props) {
         <Link href="/offer" className="mb-5">
           <Button label="Get Offer" />
         </Link>
-        <div className="flex justify-center flex-col md:flex-row gap-4  ">
-          <div className="flex flex-row justify-between gap-3 items-center px-4 py-2 bg-blue-gray rounded-xl">
+        <div className="flex justify-center flex-col md:flex-row gap-4 text-center">
+          <div className="flex flex-wrap justify-between gap-3 items-center p-2 bg-blue-gray rounded-xl">
             <div className="flex gap-2 items-center text-base">
               <Image
                 src="/icon/whatsapp.svg"
@@ -27,7 +26,7 @@ export function Footer({}: Props) {
             </div>
             <p className="text-base">+6281913663835</p>
           </div>
-          <div className="flex flex-row justify-between gap-3 items-center px-4 py-2 bg-blue-gray rounded-xl">
+          <div className="flex flex-wrap justify-between gap-3 items-center p-2 bg-blue-gray rounded-xl">
             <div className="flex gap-2 items-center text-base">
               <Image
                 src="/icon/instagram.svg"
