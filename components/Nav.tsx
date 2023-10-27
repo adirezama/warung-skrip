@@ -12,8 +12,8 @@ interface Props {}
 export function Nav() {
   const [visible, setVisible] = useState(false);
   return (
-    <header className="bg-blue-dark max-container relative">
-      <nav className="max-md:bg-blue-darker flex items-center justify-between max-container padding-x py-3 relative ">
+    <header className="bg-blue-dark relative padding-x py-3 ">
+      <nav className="flex items-center justify-between max-container relative ">
         <Link href="/">
           <h1 className="w-fit font-bold text-2xl uppercase text-white">
             Logo
