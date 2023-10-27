@@ -92,6 +92,16 @@ export default function Offering() {
         theme: "colored",
       });
     } finally {
+      setInputData({
+        package: "",
+        service: "",
+        nama: "",
+        email: "",
+        jurusan: "",
+        whatsapp: "",
+        deadline: "",
+        catatan: "",
+      });
       setSubmitting(false);
     }
   };
